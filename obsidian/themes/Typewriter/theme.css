@@ -77,11 +77,11 @@
 
 /* +++ COLOR VARIABLES */
 body {
-  --background: #2c2432;
-  --background-dark: #1c1422;
-  --foreground: #fae6cb;
-  --accent: #3c6e50;
-  --accent-active: #4c7e60;
+  --background: #0a0a0a;
+  --background-dark: #202020;
+  --foreground: #b6b6b6;
+  --accent: #ffffff;
+  --accent-active: #ffffff;
 
   --base-h: 0;
   --base-s: 0%;
