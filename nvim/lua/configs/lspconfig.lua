@@ -22,7 +22,11 @@ local servers = {
 
   -- Data files
   "jsonlint",
-  "yamllint"
+  "yamllint",
+
+  -- Rust
+  "rust-analyzer",
+  "rstcheck"
 }
 vim.lsp.enable(servers)
 
