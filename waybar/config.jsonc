@@ -3,7 +3,7 @@
     "layer": "top", 
     "position": "top", 
     "height": 0, 
-    "width": 1845,
+    "width": 2500,
     "spacing": 0, 
     
     // Module Order
@@ -35,7 +35,9 @@
             "3" : "",
             "4" : "",
             "5" : "",
-            "6" : ""
+            "6" : "",
+            "11": "",
+            "12": ""
         },
         "persistent-workspaces": {
             "1" : [],
@@ -43,7 +45,9 @@
             "3" : [],
             "4" : [],
             "5" : [],
-            "6" : []
+            "6" : [],
+            "11" : [],
+            "12" : []
         }
     },
     "custom/media": {
@@ -51,7 +55,7 @@
         "return-type": "json",
         "escape": false,
         "interval": 2,
-        "on-click": "open_widget music",
+        "on-click": "/home/karch/.local/bin/open_widget music",
         "exec": "$HOME/.config/waybar/waybar_mediaplayer 2> /dev/null"
     },
     "custom/weather" : {
@@ -60,7 +64,7 @@
 	    "escape": "false",
 	    "interval": 120,
 	    "exec" : "$HOME/.config/waybar/waybar_weather 2> /dev/null",
-	    "on-click": "open_widget weather"
+	    "on-click": "/home/karch/.local/bin/open_widget weather"
     },
     
     /* Modules center */

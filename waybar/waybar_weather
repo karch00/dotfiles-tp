@@ -4,7 +4,7 @@ import json
 import pathlib
 import time
 
-WEATHER_FILE = f"{pathlib.Path.home()}/.scripts/weatherfetch/weather.json"
+WEATHER_FILE = f"{pathlib.Path.home()}/.local/share/weatherfetch/weather.json"
 ICON_MAP = {
     0: ["󰖙", "󰖔"],
     

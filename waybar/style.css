@@ -2,7 +2,7 @@
 
 * { 
 	font-family: JetBrains Mono Nerd Font;
-  font-size: 0.9rem;
+  font-size: 16px;
 }
 window#waybar{
 	background: transparent;
@@ -20,13 +20,13 @@ window#waybar{
 	border-radius: 12px;
 	border: none;
 	
-  margin-top: 0.6rem;
-	margin-right: 10px;
+  margin-top: 0.8rem;
+	margin-right: 2rem;
 }
 #workspaces button {
 	color: @foreground;
 
-	padding: 0 8px;
+	padding: 0 16px 0 0;
 
 	transition: ease-in-out color 100ms, ease-in-out font-size 100ms;
 }
@@ -44,16 +44,16 @@ window#waybar{
 .media{
 	background: transparent;
 
-	font-size: 12px;
+  font-size: 0.9rem;
 
-	min-width: 22rem;
+	min-width: 35rem;
 
-	border: none;	
+	border: none;
 	
 	padding-left: 10px;
 	padding-right: 10px;
 
-  margin-top: 0.6rem;
+  margin-top: 0.8rem;
 }
 
 .weather {
@@ -63,8 +63,8 @@ window#waybar{
 
 	border: none;
 	
-  margin-top: 0.6rem;
-	margin-right: 10px;
+  margin-top: 0.8rem;
+	margin-right: 2rem;
 }
 
 
@@ -72,12 +72,11 @@ window#waybar{
 #clock {
   color: @foreground ;
 
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: 700;
 
-  margin-top: 0.6rem;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-top: 0.8rem;
+  margin-left: 2rem;
 }
 
 #network {
@@ -87,7 +86,8 @@ window#waybar{
 
 	border: none;
 
-  margin-top: 0.6rem;
+  margin-top: 0.8rem;
+  margin-left: 1rem;
 
 	padding: 0 10px;
 }
@@ -98,7 +98,8 @@ window#waybar{
 
 	border: none;
 
-  margin-top: 0.6rem;
+  margin-top: 0.8rem;
+  margin-left: 1rem;
 
 	padding: 0 10px;
 }
@@ -109,7 +110,8 @@ window#waybar{
 
 	border: none;
 
-  margin-top: 0.6rem;
+  margin-top: 0.8rem;
+  margin-left: 1rem;
 
 	padding: 0 10px;
 }
@@ -120,7 +122,8 @@ window#waybar{
 
 	border: none;
 	
-  margin-top: 0.6rem;
+  margin-top: 0.8rem;
+  margin-left: 1rem;
 
 	padding: 0 10px;
 }
@@ -131,7 +134,8 @@ window#waybar{
 
 	border: none;
 	
-  margin-top: 0.6rem;
+  margin-top: 0.8rem;
+  margin-left: 1rem;
 
 	padding: 0 10px;
 }

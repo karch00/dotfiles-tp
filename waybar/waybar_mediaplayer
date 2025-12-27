@@ -2,28 +2,33 @@
 
 import json
 import subprocess
-import os
 
 # Get only first artist
 def get_first_artist(artists : str):
     return artists.split(",")[0]
 
 # Truncate text to fit
-def truncate_text(text : str, max_length : int):
-    forbidden = "\"\\'¡¿=([{^´*+-/@#%$&|ºª-_.:,;<> "
+def parse_text(title: str, artist: str) -> str:
+    MAX_LEN = 56
+    MIN_ARTIST_LEN = int(MAX_LEN * 0.25)
+    MAX_TITLE_LEN = MAX_LEN - MIN_ARTIST_LEN
 
-    if len(text) > max_length:
-        selection = text[0:max_length-3]
-        if selection[-1] in forbidden:
-            toreturn = selection[:-1] + "..."
-        else:
-            toreturn = selection + "..."
-    else:
-        toreturn = text
-    return toreturn 
+    parsed_title = ""
+    idx = 0
+    while idx < len(title) and idx < MAX_TITLE_LEN:
+        parsed_title += title[idx]
+        idx+= 1
+    parsed_artist = artist[:MAX_LEN-len(parsed_title)]
 
-NO_MUSIC = "  No music currently playing"
-def main():
+    if parsed_title != title:
+        parsed_title = parsed_title[:-4] + "..."
+    if parsed_artist != artist:
+        parsed_artist = parsed_artist[:-4] + "..."
+
+    return f"{parsed_artist} - {parsed_title}"
+ 
+# Main
+def main(): 
     # Get valid browser player
     players = subprocess.check_output(["playerctl", "--list-all"], text=True).strip().split()
     player = players[0] if len(players) >= 1 else None
@@ -33,19 +38,18 @@ def main():
     # Process artist and title formatting
     artist = subprocess.check_output(["playerctl", "--player="+player, "metadata", "artist"], text=True).strip()
     title = subprocess.check_output(["playerctl", "--player="+player, "metadata", "title"], text=True).strip()
-    
-    if artist in title:
-        title.replace(artist, "")
-
-    artist = truncate_text(get_first_artist(artist), 12)
-    title = truncate_text(title, 28)
 
     # Format message
-    text = f"  {artist} - {title}"
+    artist = get_first_artist(artist)
+    parsed_title = parse_text(title, artist)
+
+    text = f"  {parsed_title}"
     
     return {"text": text, "class": "media"}
 
 if __name__ == "__main__":
+    NO_MUSIC = "  No music currently playing"
+    main()
     try:
         info = main()
         print(json.dumps(info))
