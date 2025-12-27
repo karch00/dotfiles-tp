@@ -43,7 +43,7 @@ export FZF_TMUX_OPTS="-p80%,60%"
 zstyle ":autocomplete:*" widget-style menu-complete
 zstyle ":autocomplete:*" fzf-completion yes
 zstyle ":fzf-tab:*" fzf-command ftb-tmux-popup
-zstyle ":fzf-tab:*" fzf-flags "--pointer=▶" "--height=15" "--layout=reverse" "--border=rounded" "--scroll-off=0" "--ansi" "--color=border:0,pointer:7,bg+:0,fg+:8,hl:8,hl+:8,info:8,prompt:8"
+zstyle ":fzf-tab:*" fzf-flags "--pointer=▶" "--height=15" "--layout=reverse" "--border=rounded" "--scroll-off=0" "--ansi" "--color=border:7,pointer:0,bg+:15,fg+:7,hl:7,hl+:7,info:7,prompt:7"
 
 
 # Keymaps
@@ -63,7 +63,7 @@ eval "$(starship init zsh)"
 
 # Aliases
 alias astroterm="astroterm --color --constellations --speed 6000 --fps 64 --city paris -t 10"
-alias ls="eza -l --icons=always -M -h --git --git-repos -@ --color=never"
+alias ls="eza -l --icons=always -M -h --git --git-repos -@ --color=always"
 
 
 # Load zplug
