@@ -1,0 +1,48 @@
+;;; ADRESSES ;;;
+(defpoll netAdresses
+  :initial "Priv: No IP Public: No IP"
+  :interval "10s"
+  `./scripts/network/getip.sh`
+)
+(defwidget ipContainer []
+  (label
+    :text "${netAdresses}"
+    :justify "start"
+  )
+)
+
+(defwidget adressContainer []
+  (box
+    :orientation "h"
+
+    (ipContainer)
+  )
+)
+
+
+;;; MAIN ;;;
+(defwidget networkMainContainer []
+  (box
+    :orientation "h"
+    :spacing 0
+
+    (adressContainer)
+  )
+)
+
+(defwindow network
+  :monitor 0
+  :geometry (geometry
+    :x "1750px"
+    :y "4px"
+    :width "340px"
+    :height "180px"
+    :anchor "top left"
+  )
+  :stacking "fg"
+  :reserve (struts :distance "40px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+
+  (networkMainContainer)
+)
