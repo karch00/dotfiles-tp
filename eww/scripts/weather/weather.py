@@ -3,7 +3,7 @@ import pathlib
 import json
 import time
 
-WEATHER_FILE = f"{pathlib.Path.home()}/.scripts/weatherfetch/weather.json"
+WEATHER_FILE = f"{pathlib.Path.home()}/.local/share/weatherfetch/weather.json"
 ICON_MAP = {
     0: [" 󰖙", " 󰖔"],
     
@@ -197,4 +197,11 @@ def main() -> None:
     }))
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyError:
+        print(json.dumps({
+            "current": "nodata",
+            "hourly": "nodata",
+            "daily": "nodata"
+        }))

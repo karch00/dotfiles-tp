@@ -3,7 +3,6 @@ from dbus.mainloop.glib import DBusGMainLoop
 from gi.repository import GLib
 import requests
 import json
-import os
 
 SESSION = requests.Session()
 MISSING_METADATA = {
@@ -46,10 +45,10 @@ def getVolumeIcon(volume: int):
     elif volume <= 100:
         return VOLUME_ICONS["high"]
 
-def playerAvailable(bus) -> str:
+def playerAvailable(bus) -> str | None:
     """Checks if any player is available"""
     for service in bus.list_names():
-        if service.startswith("org.mpris.MediaPlayer2.") and "playerctld" not in service:
+        if service.startswith("org.mpris.MediaPlayer2.") and "brave" not in service and "playerctld" not in service:
             return service
     return None
 
@@ -96,7 +95,7 @@ def getImage(image: str, title: str, artist: str) -> str:
     except Exception:
         return "./assets/music_placeholder.png"
 
-def getPlayerData(properties) -> dict:
+def getPlayerData(properties) -> dict | None:
     """Get all relevant music and player data"""
     try:
         all_data = properties.GetAll("org.mpris.MediaPlayer2.Player")
@@ -180,7 +179,7 @@ def main():
         loop = GLib.MainLoop()
         loop.run()
     
-    except Exception as e:
+    except Exception:
         print(json.dumps(MISSING_METADATA))
 
 if __name__ == "__main__":
