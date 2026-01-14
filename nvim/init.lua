@@ -13,6 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = require "configs.lazy"
 
+-- options
+
+vim.opt.termguicolors = true
+
 -- load plugins
 require("lazy").setup({
   {
@@ -35,3 +39,7 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- Custom
+local opt = vim.opt
+opt.wrap = false

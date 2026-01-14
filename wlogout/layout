@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "wayland-logout",
+    "action" : "waylock",
     "text" : "",
     "keybind" : "l"
 }

@@ -29,4 +29,23 @@ return {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
     },
   },
+
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "VeryLazy",
+    opts = {
+      filetypes = { "*" },
+      user_default_options = {
+        RGB = true,
+        RRGGBB = true,
+        names = true,
+        RRGGBBAA = true,
+        AARRGGBB = true,
+        rgb_fn = true,
+        hsl_fn = true,
+        css = true,
+        mode = "virtualtext",
+      },
+  },
+}
 }
