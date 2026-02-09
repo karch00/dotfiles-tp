@@ -146,7 +146,7 @@
 (defwindow music
   :monitor 0
   :geometry (geometry 
-              :x "262px"
+              :x "255px"
               :y "4px"
               :width "634px"
               :height "240px"
