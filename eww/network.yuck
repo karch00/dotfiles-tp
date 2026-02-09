@@ -1,23 +1,28 @@
 ;;; ADRESSES ;;;
 (defpoll netAdresses
-  :initial "Priv: No IP Public: No IP"
-  :interval "10s"
-  `./scripts/network/getip.sh`
+  :initial "{}"
+  :interval "5s"
+  `./scripts/network/getip.sh | jq .`
 )
-(defwidget ipContainer []
+
+(defwidget adressLabel [name]
   (label
-    :text "${netAdresses}"
-    :justify "start"
+    :text {netAdresses[name]}
+    :justify "left"
   )
 )
 
 (defwidget adressContainer []
   (box
-    :orientation "h"
+    :orientation "v"
+    :spacing -20
 
-    (ipContainer)
+    (for name in {["interface", "essid", "mac", "priv", "public"]}
+      (adressLabel :name name)
+    )
   )
 )
+
 
 
 ;;; MAIN ;;;
@@ -33,10 +38,10 @@
 (defwindow network
   :monitor 0
   :geometry (geometry
-    :x "1750px"
+    :x "1800px"
     :y "4px"
-    :width "340px"
-    :height "180px"
+    :width "240px"
+    :height "160px"
     :anchor "top left"
   )
   :stacking "fg"

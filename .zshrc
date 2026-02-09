@@ -2,7 +2,9 @@
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
-export PATH=$PATH:/home/karch/.spicetify
+export PATH="$PATH:/home/karch/.spicetify"
+export PATH="$PATH:/home/karch/.local/share/maltego/bin"
+export PATH="$PATH:/home/karch/Scripts"
 
 source ~/.zplug/init.zsh
 
@@ -43,7 +45,7 @@ export FZF_TMUX_OPTS="-p80%,60%"
 zstyle ":autocomplete:*" widget-style menu-complete
 zstyle ":autocomplete:*" fzf-completion yes
 zstyle ":fzf-tab:*" fzf-command ftb-tmux-popup
-zstyle ":fzf-tab:*" fzf-flags "--pointer=▶" "--height=15" "--layout=reverse" "--border=rounded" "--scroll-off=0" "--ansi" "--color=border:7,pointer:0,bg+:15,fg+:7,hl:7,hl+:7,info:7,prompt:7"
+zstyle ":fzf-tab:*" fzf-flags "--pointer=▶" "--height=15" "--layout=reverse" "--border=rounded" "--scroll-off=0" "--ansi" "--color=border:7,pointer:0,bg+:8,fg+:7,hl:7,hl+:7,info:7,prompt:7"
 
 
 # Keymaps
@@ -64,6 +66,7 @@ eval "$(starship init zsh)"
 # Aliases
 alias astroterm="astroterm --color --constellations --speed 6000 --fps 64 --city paris -t 10"
 alias ls="eza -l --icons=always -M -h --git --git-repos -@ --color=always"
+alias hyprpicker="hyprpicker -a"
 
 
 # Load zplug

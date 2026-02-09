@@ -1,36 +1,36 @@
 {
     "label" : "lock",
-    "action" : "waylock",
+    "action" : "sleep 0.25 && hyprlock",
     "text" : "",
     "keybind" : "l"
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "sleep 0.25 && systemctl poweroff",
     "text" : "",
     "keybind" : "s"
 }
 {
     "label" : "logout",
-    "action" : "wayland-logout",
+    "action" : "sleep 0.25 && wayland-logout",
     "text" : "",
     "keybind" : "e"
 }
 {
     "label" : "reboot",
-    "action" : "systemctl reboot",
+    "action" : "sleep 0.25 && systemctl reboot",
     "text" : "",
     "keybind" : "r"
 }
 {
     "label" : "suspend",
-    "action" : "systemctl suspend",
+    "action" : "sleep 0.25 && systemctl suspend",
     "text" : "",
     "keybind" : "u"
 }
 {
     "label" : "hibernate",
-    "action" : "systemctl hibernate",
+    "action" : "sleep 0.25 && systemctl hibernate",
     "text" : "",
     "keybind" : "h"
 }

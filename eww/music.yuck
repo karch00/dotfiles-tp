@@ -1,4 +1,7 @@
-(deflisten getData "python -u ./scripts/music/getmainmetadata.py")
+(deflisten getData 
+  :initial '{"title": "No song playing", "artist": "---", "image": "./assets/music_placeholder.png", "length": 1, "progress_time": "00:00", "progress_bar": null, "volume": null, "volume_icon": "", "status_icon": "", "shuffle_icon": "󰒟", "repeat_icon": "󰑖"}'
+  `python -u ./scripts/music/getmainmetadata.py`
+)
 
 (defwidget imageContainer []
   (image
@@ -24,7 +27,7 @@
       :orientation "h"
       :class "progress-bar"
       :width 300
-      :onchange "sleep 1 && playerctl position {}"
+      :onchange "playerctl position {}"
     )
   )
 )

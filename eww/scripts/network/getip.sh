@@ -4,7 +4,7 @@
 INTERFACE=$(ip l | grep " UP " | pcregrep -o '[0-9]+: [a-z0-9]+:' | pcregrep -o '[a-z0-9]{2,}' | head -1)
 if [[ $INTERFACE == "" ]]; then
   INTERFACE="No interface"
-fi
+fi    
 
 TYPE=$(nmcli -g GENERAL.TYPE device show $INTERFACE)
 if [[ $TYPE == "wifi" ]]; then
@@ -44,5 +44,7 @@ fi
 
 
 ### OUTPUT ###
-echo -e "$INTERFACE_ICON $INTERFACE\n󰀃 $ESSID\n󰇄 $MAC\n󰌗 $PRIV\n󰖈 $PUBLIC"
+echo  "{\"interface\": \"$INTERFACE_ICON $INTERFACE\", \"essid\": \"󰀃 $ESSID\", \"mac\": \"󰇄 $MAC\", \"priv\": \"󰌗 $PRIV\", \"public\": \"󰖈 $PUBLIC\"}"
+
+
 
