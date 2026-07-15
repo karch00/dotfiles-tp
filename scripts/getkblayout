@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+layout_active=$(hyprctl getoption input:kb_layout | pcregrep -o -e '(es)|(us)') # Get 'us' or 'es' only
+
+echo ${layout_active^^}

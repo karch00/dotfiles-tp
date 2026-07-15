@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+layout_active=$(hyprctl getoption input:kb_layout | pcregrep -o -e '(es)|(us)') # Get 'us' or 'es' only
+
+if [[ $layout_active == "us" ]]; then
+    hyprctl keyword input:kb_layout es
+elif [[ $layout_active == "es" ]]; then
+    hyprctl keyword input:kb_layout us
+fi
+
+pkill -RTMIN+2 waybar

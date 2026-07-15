@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import os
 import json
 import requests
@@ -8,7 +10,7 @@ import pathlib
 SESSION = requests.Session()
 GEOLOCATION_URL = "https://api.ipbase.com/v2/info"
 WEATHER_URL = "https://api.open-meteo.com/v1/forecast?latitude=%%LAT%%&longitude=%%LON%%&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,rain_sum,snowfall_sum,weather_code,sunrise,sunset&hourly=temperature_2m,precipitation_probability,rain,wind_speed_10m,snowfall,weather_code&current=temperature_2m,precipitation,rain,snowfall,wind_speed_10m,weather_code&timezone=Europe%2FBerlin&timeformat=unixtime"
-WEATHER_FILE = f"{pathlib.Path.home()}/.scripts/weatherfetch/weather.json"
+WEATHER_FILE = f"{pathlib.Path.home()}/.local/share/weatherfetch/weather.json"
 DEFAULT_TEMPLATE = {
     "updated": 0,
     "data": None,
@@ -93,24 +95,27 @@ def writeToJson(filepath: str, content: dict) -> None:
 
 
 
-def main() -> None: 
+def main() -> int: 
     ensureFileExists(WEATHER_FILE)
+    retries = 0
 
     while True:
-        last_weather_data = getJsonContents(filepath=WEATHER_FILE)
-        time_difference = time.time() - last_weather_data["updated"]
-        if time_difference < 300:
-            time.sleep(time_difference + 1)
-            continue
+        if retries > 200:
+            print("Max retries of 200 exceeded")
+            return 1
 
         if not internetAvailable():
             time.sleep(5)
+            retries += 1
+            print(f"No internet available, retrying... [{retries} / 200]")
             continue
 
         lat, lon = getGeolocation(GEOLOCATION_URL)
         weather = getWeather(base_url=WEATHER_URL, lat=lat, lon=lon)
         if not weather:
             time.sleep(5)
+            retries += 1
+            print(f"No weather could be fetched, retrying... [{retries} / 200]")
             continue
 
         current_weather = weather["current"]
@@ -119,6 +124,7 @@ def main() -> None:
         weather_obj = {"updated": time.time()} | {"current": current_weather} | {"hourly": hourly_weather} | {"daily": daily_weather}
 
         writeToJson(filepath=WEATHER_FILE, content=weather_obj)
+        return 0
 
 
 

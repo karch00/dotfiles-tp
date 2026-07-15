@@ -31,6 +31,8 @@ def parse_text(title: str, artist: str) -> str:
 def main(): 
     # Get valid browser player
     players = subprocess.check_output(["playerctl", "--list-all"], text=True).strip().split()
+    for player in players:
+        players.remove(player) if "brave" in player else ...
     player = players[0] if len(players) >= 1 else None
     if not player or player == [""]:
         return {"text": NO_MUSIC, "class": "media"}
