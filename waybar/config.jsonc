@@ -1,6 +1,6 @@
 // -*- mode: jsonc -*-
 {
-  "layer": "top",
+  "layer": "bottom",
   "output": "eDP-1",
   "position": "top",
   "height": 0,

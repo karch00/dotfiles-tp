@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# ~/.local/bin/nightlight
+
+SHADER="$HOME/.config/hypr/shaders/warmth.frag"
+
+if [ "$(hyprctl getoption decoration:screen_shader -j | jq -r '.str')" = "$SHADER" ]; then
+    hyprctl keyword decoration:screen_shader ""
+else
+    hyprctl keyword decoration:screen_shader "$SHADER"
+fi
